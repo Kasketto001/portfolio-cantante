@@ -36,13 +36,20 @@ html {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --font-cabinet-grotesk: 'Cabinet Grotesk', sans-serif;
   }
 }
+
+title {
+
+  font-family: 'Work Sans', sans-serif;
+}
+
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Cabinet Grotesk', sans-serif;
+  font-family: var(--font-cabinet-grotesk);
   overflow-x: hidden;
 }
 

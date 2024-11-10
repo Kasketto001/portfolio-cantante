@@ -1,15 +1,26 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+
 import { FaBars, FaTimes } from 'react-icons/fa';
+import gsap from 'gsap';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement | null>(null);
+  const menuLinksRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // Animazione navbar all'apertura della pagina
+    gsap.fromTo(
+      navRef.current,
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+    );
+
+    // Animazione scroll per cambiare lo sfondo della navbar
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -21,23 +32,26 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen && menuLinksRef.current) {
+      // Animazione per l’apertura dei link del menu laterale
+      gsap.fromTo(
+        Array.from(menuLinksRef.current.children),
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" }
+      );
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
   }, [isMenuOpen]);
 
   const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
+    setIsMenuOpen(prev => !prev);
   };
 
   return (
     <nav
+      ref={navRef}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-black backdrop-blur-md bg-opacity-50 shadow-lg' : 'bg-transparent'
       }`}
@@ -45,7 +59,12 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto flex items-center justify-between p-6">
         {/* Logo */}
         <div className="text-white text-2xl font-bold flex items-center">
-          <Image src="/img/gs-logo.svg" alt="Giovanna Sofia Logo" width={150} height={150} />
+        <span
+          className="text-md font-bold"
+          style={{ fontFamily: 'Work Sans, sans-serif' }}
+        >
+          Giovanna Sofia
+        </span>
         </div>
 
         {/* Menu Items for Larger Screens */}
@@ -77,7 +96,7 @@ const Navbar: React.FC = () => {
           className="md:hidden text-white text-3xl focus:outline-none z-50"
           onClick={toggleMenu}
         >
-          {isMenuOpen ? <FaTimes className='hidden' /> : <FaBars />}
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
         {/* Overlay per la Sidebar Mobile */}
@@ -87,7 +106,8 @@ const Navbar: React.FC = () => {
 
         {/* Sidebar Menu for Mobile */}
         <div
-          className={`fixed h-screen top-0 right-0 h-full w-64 bg-black bg-opacity-90 transform ${
+          ref={menuLinksRef}
+          className={`fixed top-0 right-0 h-screen w-64 bg-black bg-opacity-90 transform ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           } transition-transform duration-300 ease-in-out z-50`}
         >

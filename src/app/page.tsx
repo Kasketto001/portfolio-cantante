@@ -7,7 +7,7 @@ import Gallery from '../components/Gallery';
 import Tour from '../components/Tour';
 import Contact from '../components/Contacts';
 import Footer from '../components/Footer';
-
+import MusicPlayer from '../components/MusicPlayer';
 
 const Home: React.FC = () => {
   return (
@@ -20,6 +20,7 @@ const Home: React.FC = () => {
       <Tour />
       <Contact />
       <Footer />
+      <MusicPlayer />
     </div>
   );
 };
