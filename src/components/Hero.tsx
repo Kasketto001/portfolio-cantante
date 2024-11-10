@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
       >
-        <source src="/videos/gs-beyonce.mp4" type="video/mp4" />
+        <source src="https://helmet-agency.it/external-assets/gs-beyonce.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
