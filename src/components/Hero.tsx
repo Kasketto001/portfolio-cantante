@@ -6,7 +6,7 @@ import gsap from 'gsap';
 
 const Hero: React.FC = () => {
   const [isMuted, setIsMuted] = useState(true);
-  const [volume, setVolume] = useState(0.5); // Default volume
+  const [volume, setVolume] = useState(0.0); // Default volume
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
