@@ -30,22 +30,22 @@ const Footer: React.FC = () => {
           <Link href="#biografia" className="hover:text-pink-500">Biografia</Link>
           <Link href="#musica" className="hover:text-pink-500">Musica</Link>
           <Link href="#galleria" className="hover:text-pink-500">Galleria</Link>
-          <Link href="#tour" className="hover:text-pink-500">Tour</Link>
+          {/* <Link href="#tour" className="hover:text-pink-500">Tour</Link> */}
           <Link href="#contatti" className="hover:text-pink-500">Contatti</Link>
         </div>
 
         {/* Social Icons */}
         <div className="flex space-x-4">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500">
+          <a href="https://www.facebook.com/giovanna.sofia.principi" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500">
             <FaFacebookF size={20} />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500">
+          <a href="https://www.instagram.com/_sia_giovanna_che_sofia_/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500">
             <FaInstagram size={20} />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400">
+          {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400">
             <FaTwitter size={20} />
-          </a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500">
+          </a> */}
+          <a href="https://www.youtube.com/@giovanna-sofia" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500">
             <FaYoutube size={20} />
           </a>
         </div>

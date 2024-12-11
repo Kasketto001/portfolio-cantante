@@ -75,13 +75,13 @@ const Contact: React.FC = () => {
 
       {/* Icone social media */}
       <div className="flex space-x-6 mt-6 z-10">
-        <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110">
+        <a href="https://www.instagram.com/_sia_giovanna_che_sofia_/" className="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110">
           <FaInstagram size={24} />
         </a>
-        <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110">
+        <a href="https://www.facebook.com/giovanna.sofia.principi" className="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110">
           <FaFacebook size={24} />
         </a>
-        <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110">
+        <a href="https://www.youtube.com/@giovanna-sofia" className="text-gray-400 hover:text-white transition-colors duration-200 transform hover:scale-110">
           <FaYoutube size={24} />
         </a>
       </div>
