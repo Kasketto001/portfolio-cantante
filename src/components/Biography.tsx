@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import Image from 'next/image';
 gsap.registerPlugin(ScrollTrigger);
 
 const Biography: React.FC = () => {
@@ -57,7 +57,7 @@ const Biography: React.FC = () => {
           ref={imageRef}
           className="w-full md:w-1/3 flex justify-center mb-8 md:mb-0 z-10 group cursor-pointer"
         >
-          <img
+          <Image
             src="/img/giovanna-sofia.jpg"
             alt="Giovanna Sofia"
             width={300}
