@@ -109,7 +109,7 @@ const Gallery: React.FC = () => {
             />
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 text-white text-3xl font-bold"
+              className="absolute top-3 right-6 text-white text-4xl font-bold"
             >
               &times;
             </button>

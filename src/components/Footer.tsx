@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube, FaHeart } from 'react-icons/fa';
 
@@ -12,12 +13,13 @@ const Footer: React.FC = () => {
         
         {/* Logo e Descrizione */}
         <div className="flex flex-col items-center md:items-start space-y-3 text-center md:text-left">
-        <span
-          className="text-md font-bold"
-          style={{ fontFamily: 'Work Sans, sans-serif' }}
-        >
-          Giovanna Sofia
-        </span>
+        <Image
+          src="/img/logo-gs.svg"
+          alt="Giovanna Sofia"
+          width={80}
+          height={80}
+          className="object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
+        />
           <p className="text-gray-400 text-sm max-w-xs">
             Cantante e performer, portando la sua voce e passione in tutto il mondo con un mix di pop, jazz e R&B.
           </p>

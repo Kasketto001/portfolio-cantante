@@ -4,10 +4,10 @@ import Navbar from '../components/Navbar';
 import Biography from '../components/Biography';
 import Music from '../components/Music';
 import Gallery from '../components/Gallery';
-import Tour from '../components/Tour';
+// import Tour from '../components/Tour';
 import Contact from '../components/Contacts';
 import Footer from '../components/Footer';
-import MusicPlayer from '../components/MusicPlayer';
+// import MusicPlayer from '../components/MusicPlayer';
 
 const Home: React.FC = () => {
   return (
@@ -17,10 +17,10 @@ const Home: React.FC = () => {
       <Biography />
       <Music />
       <Gallery />
-      <Tour />
+      {/* <Tour /> */}
       <Contact />
       <Footer />
-      <MusicPlayer />
+      {/* <MusicPlayer /> */}
     </div>
   );
 };

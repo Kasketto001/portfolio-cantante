@@ -2,15 +2,17 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
+import Image from 'next/image';
 import gsap from 'gsap';
 
 const Hero: React.FC = () => {
   const [isMuted, setIsMuted] = useState(true);
-  const [volume, setVolume] = useState(0.5); // Default volume
+  const [volume, setVolume] = useState(0.5);
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const volumeButtonRef = useRef<HTMLButtonElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -29,24 +31,66 @@ const Hero: React.FC = () => {
   };
 
   useEffect(() => {
-    // Animazioni iniziali con GSAP
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: -50 },
-      { opacity: 1, y: 0, duration: 1.2, delay: 0.5, ease: 'power3.out' }
-    );
+    // Intro Animation
+    const timeline = gsap.timeline();
 
-    gsap.fromTo(
-      subtitleRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1.2, delay: 1, ease: 'power3.out' }
-    );
+    timeline
+      .fromTo(
+        imageRef.current,
+        { scale: 0, rotation: -180, opacity: 0 },
+        { scale: 1, rotation: 0, opacity: 1, duration: 1.5, ease: 'elastic.out(1, 0.5)' }
+      )
+      .fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
+        '-=1'
+      )
+      .fromTo(
+        subtitleRef.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
+        '-=0.8'
+      )
+      .fromTo(
+        volumeButtonRef.current,
+        { opacity: 0, scale: 0 },
+        { opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)' },
+        '-=0.5'
+      );
 
-    gsap.fromTo(
-      volumeButtonRef.current,
-      { opacity: 0, scale: 0 },
-      { opacity: 1, scale: 1, duration: 1, delay: 1.5, ease: 'power3.out' }
-    );
+    // Subtle floating effect for subtitle
+    gsap.to(subtitleRef.current, {
+      y: '+=10',
+      repeat: -1,
+      yoyo: true,
+      duration: 2,
+      ease: 'power1.inOut',
+    });
+
+    // Mouse interaction for the SVG
+    const handleMouseMove = (e: MouseEvent) => {
+      if (imageRef.current) {
+        const { innerWidth, innerHeight } = window;
+        const { clientX, clientY } = e;
+        const xPercent = (clientX / innerWidth - 0.5) * 20;
+        const yPercent = (clientY / innerHeight - 0.5) * 20;
+
+        gsap.to(imageRef.current, {
+          x: xPercent,
+          y: yPercent,
+          rotation: xPercent * 0.5,
+          duration: 0.5,
+          ease: 'power3.out',
+        });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   return (
@@ -69,18 +113,20 @@ const Hero: React.FC = () => {
 
       {/* Hero Text with Logo */}
       <div className="relative z-10 flex flex-col items-center">
-        <h1
-          ref={titleRef}
-          className="text-5xl md:text-7xl font-bold"
-          style={{ fontFamily: 'Work Sans, sans-serif' }}
-        >
-          Giovanna Sofia
-        </h1>
+        <div ref={imageRef} className="relative">
+          <Image
+            src="/img/logo-gs.svg"
+            alt="Giovanna Sofia"
+            width={400}
+            height={400}
+            className="object-cover hover:scale-110 transition-transform duration-300 ease-in-out"
+          />
+        </div>
         <p
           ref={subtitleRef}
-          className="mt-4 text-xl md:text-2xl font-light italic text-opacity-20"
+          className="mt-2 text-xl md:text-2xl font-light italic text-opacity-80"
         >
-          Pop, soul and Jazz Singer
+          Pop, Soul and Jazz Singer
         </p>
       </div>
 
@@ -108,27 +154,6 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-b from-transparent to-black z-0"></div>
-
-      <style jsx>{`
-        /* Custom styling for the slider thumb */
-        input[type="range"]::-webkit-slider-thumb {
-          appearance: none;
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background-color: #f97316;
-          cursor: pointer;
-          box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-        }
-
-        input[type="range"]::-moz-range-thumb {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background-color: #ec4899;
-          cursor: pointer;
-        }
-      `}</style>
     </div>
   );
 };
