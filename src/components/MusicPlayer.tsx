@@ -6,8 +6,7 @@ import { BiExpandAlt } from "react-icons/bi";
 
 const songs = [
   { title: "caffè in sospeso", artist: "Giovanna Sofia, KASK1", src: "https://www.helmet-agency.it/external-assets/caffeinsospeso.wav" },
-  { title: "Canzone 2", artist: "Giovanna Sofia Principi", src: "/songs/canzone2.mp3" },
-  { title: "Canzone 3", artist: "Giovanna Sofia Principi", src: "/songs/canzone3.mp3" },
+  
 ];
 
 const MusicPlayer: React.FC = () => {
