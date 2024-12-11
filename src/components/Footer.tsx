@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube, FaHeart } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaYoutube, FaHeart } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear(); // Calcola l'anno corrente
